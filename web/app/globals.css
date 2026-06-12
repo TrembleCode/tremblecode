@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .tui-input {
+    @apply w-full border border-tui-border bg-tui-bg px-3 py-2 text-sm text-tui-text font-mono focus:border-tui-active focus:outline-none tracking-wide;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Theme system: four themes on one CSS-variable contract.
+   CRT family:    dark (phosphor)  · light (declassified document)
+   Normal family: normal-dark      · normal-light  (clean, paper/olive)
+   RGB triplets power Tailwind's opacity modifier (bg-tui-border/30).
+   ────────────────────────────────────────────────────────────── */
+
+/* ── CRT DARK (default) — Phosphor ── */
+:root,
+[data-theme="dark"] {
+  --tui-bg-rgb:     6 10 6;
+  --tui-panel-rgb:  8 13 8;
+  --tui-border-rgb: 13 59 22;
+  --tui-text-rgb:   51 255 87;
+  --tui-dim-rgb:    26 102 38;
+  --tui-accent-rgb: 255 153 0;
+  --tui-danger-rgb: 255 34 68;
+  --tui-active-rgb: 0 255 65;
+
+  --font-display: 'VT323', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Share Tech Mono', monospace;
+  --prose-heading-transform: uppercase;
+  --prose-heading-spacing: 0.08em;
+
+  --scanline-color: rgba(0, 0, 0, 0.07);
+  --scanline-stripe: 2px;
+  --scanline-gap: 4px;
+  --dot-color: transparent;
+}
+
+/* ── CRT LIGHT — Declassified Document ── */
+[data-theme="light"] {
+  --tui-bg-rgb:     240 234 214;
+  --tui-panel-rgb:  232 224 200;
+  --tui-border-rgb: 138 122 80;
+  --tui-text-rgb:   26 46 26;
+  --tui-dim-rgb:    74 94 58;
+  --tui-accent-rgb: 184 74 0;
+  --tui-danger-rgb: 170 17 34;
+  --tui-active-rgb: 13 74 26;
+
+  --font-display: 'VT323', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Share Tech Mono', monospace;
+  --prose-heading-transform: uppercase;
+  --prose-heading-spacing: 0.08em;
+
+  --scanline-color: rgba(139, 120, 60, 0.06);
+  --scanline-stripe: 1px;
+  --scanline-gap: 3px;
+  --dot-color: transparent;
+}
+
+/* ── NORMAL DARK — olive/amber, clean ── */
+[data-theme="normal-dark"] {
+  --tui-bg-rgb:     12 15 10;    /* #0c0f0a */
+  --tui-panel-rgb:  20 26 18;    /* #141a12 */
+  --tui-border-rgb: 48 58 44;
+  --tui-text-rgb:   240 237 230; /* #f0ede6 */
+  --tui-dim-rgb:    154 150 137; /* #9a9689 */
+  --tui-accent-rgb: 232 160 32;  /* #e8a020 amber */
+  --tui-danger-rgb: 224 92 92;
+  --tui-active-rgb: 116 178 134; /* sage, lifted for contrast on dark */
+
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'JetBrains Mono', monospace;
+  --prose-heading-transform: none;
+  --prose-heading-spacing: 0.01em;
+
+  --scanline-color: transparent;
+  --scanline-stripe: 0px;
+  --scanline-gap: 1px;
+  --dot-color: rgba(232, 160, 32, 0.06);
+}
+
+/* ── NORMAL LIGHT — warm paper ── */
+[data-theme="normal-light"] {
+  --tui-bg-rgb:     245 242 234; /* #f5f2ea */
+  --tui-panel-rgb:  237 234 221; /* #edeadd */
+  --tui-border-rgb: 209 202 182;
+  --tui-text-rgb:   22 19 12;    /* #16130c */
+  --tui-dim-rgb:    106 96 85;   /* #6a6055 */
+  --tui-accent-rgb: 159 87 0;    /* #9f5700 amber */
+  --tui-danger-rgb: 170 34 34;
+  --tui-active-rgb: 42 85 56;    /* #2a5538 sage */
+
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'JetBrains Mono', monospace;
+  --prose-heading-transform: none;
+  --prose-heading-spacing: 0.01em;
+
+  --scanline-color: transparent;
+  --scanline-stripe: 0px;
+  --scanline-gap: 1px;
+  --dot-color: rgba(159, 87, 0, 0.07);
+}
+
+html {
+  background: rgb(var(--tui-bg-rgb));
+  color: rgb(var(--tui-text-rgb));
+}
+
+body {
+  background-color: rgb(var(--tui-bg-rgb));
+  color: rgb(var(--tui-text-rgb));
+  font-family: var(--font-body);
+  position: relative;
+  transition: background 0.25s ease, color 0.25s ease;
+  /* dot grid — visible only in the normal themes (transparent otherwise) */
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+::selection {
+  background-color: rgb(var(--tui-accent-rgb) / 0.25);
+  color: rgb(var(--tui-text-rgb));
+}
+
+/* Scanline overlay — CRT themes only */
+html:not([data-theme^="normal"]) body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent var(--scanline-stripe),
+    var(--scanline-color) var(--scanline-stripe),
+    var(--scanline-color) var(--scanline-gap)
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT light theme — subtle paper texture vignette */
+html[data-theme="light"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 60%, rgba(100, 80, 20, 0.08) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Normal themes — calm the CRT motion effects */
+html[data-theme^="normal"] .animate-flicker { animation: none; }
+html[data-theme^="normal"] .animate-glitch  { animation: none; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgb(var(--tui-panel-rgb)); }
+::-webkit-scrollbar-thumb { background: rgb(var(--tui-border-rgb)); }
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--tui-dim-rgb)); }
+
+/* Markdown preview — scoped to .tui-prose */
+.tui-prose h1,
+.tui-prose h2,
+.tui-prose h3,
+.tui-prose h4 {
+  font-family: var(--font-display);
+  color: rgb(var(--tui-active-rgb));
+  text-transform: var(--prose-heading-transform);
+  letter-spacing: var(--prose-heading-spacing);
+  margin-top: 1.5em;
+  margin-bottom: 0.4em;
+}
+.tui-prose p {
+  color: rgb(var(--tui-text-rgb));
+  margin-bottom: 0.75em;
+  line-height: 1.65;
+}
+.tui-prose a {
+  color: rgb(var(--tui-accent-rgb));
+  text-decoration: underline;
+}
+.tui-prose strong { color: rgb(var(--tui-active-rgb)); }
+.tui-prose em     { color: rgb(var(--tui-dim-rgb)); font-style: italic; }
+.tui-prose code {
+  background: rgb(var(--tui-panel-rgb));
+  border: 1px solid rgb(var(--tui-border-rgb));
+  padding: 0.1em 0.35em;
+  color: rgb(var(--tui-accent-rgb));
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+.tui-prose pre {
+  background: rgb(var(--tui-panel-rgb));
+  border: 1px solid rgb(var(--tui-border-rgb));
+  padding: 1em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+.tui-prose pre code {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+.tui-prose ul,
+.tui-prose ol {
+  padding-left: 1.5em;
+  color: rgb(var(--tui-text-rgb));
+  margin-bottom: 0.75em;
+}
+.tui-prose li { margin-bottom: 0.25em; }
+.tui-prose blockquote {
+  border-left: 3px solid rgb(var(--tui-accent-rgb));
+  padding-left: 1em;
+  color: rgb(var(--tui-dim-rgb));
+  margin-left: 0;
+  margin-bottom: 0.75em;
+}
+.tui-prose hr {
+  border: none;
+  border-top: 1px solid rgb(var(--tui-border-rgb));
+  margin: 1.5em 0;
+}
+.tui-prose table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
+.tui-prose th {
+  color: rgb(var(--tui-active-rgb));
+  border-bottom: 1px solid rgb(var(--tui-border-rgb));
+  padding: 0.4em 0.6em;
+  text-align: left;
+  text-transform: var(--prose-heading-transform);
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+}
+.tui-prose td {
+  color: rgb(var(--tui-text-rgb));
+  border-bottom: 1px solid rgb(var(--tui-border-rgb));
+  padding: 0.4em 0.6em;
+}

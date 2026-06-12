@@ -1,0 +1,22 @@
+# tremblecode-sandbox:flutter — base sandbox + Flutter SDK for mobile projects.
+FROM tremblecode-sandbox:base
+
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    unzip xz-utils zip libglu1-mesa openjdk-17-jdk-headless \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG FLUTTER_VERSION=stable
+RUN git clone --depth 1 -b ${FLUTTER_VERSION} \
+    https://github.com/flutter/flutter.git /opt/flutter \
+    && chown -R agent:agent /opt/flutter
+
+ENV PATH="/opt/flutter/bin:${PATH}"
+
+USER agent
+# pre-warm the SDK so first agent use isn't a 5-minute download
+RUN flutter precache --web --no-ios --no-android || true \
+    && flutter config --no-analytics || true
+
+WORKDIR /home/agent
+CMD ["/usr/local/bin/tremblecode-relay-loop"]

@@ -1,0 +1,15 @@
+# TrembleCode runtime state (per-workspace, never committed)
+.claude/settings.json
+.claude/settings.local.json
+
+# Common build artifacts
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+build/
+.next/
+.pytest_cache/
+.DS_Store
+*.log

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "tremblecode": {
+      "command": "tremblecode-mcp",
+      "env": {
+        "TC_RELAY": "http://127.0.0.1:8765"
+      }
+    }{% for server in extra_servers %},
+    "{{ server.name }}": {{ server.config_json }}{% endfor %}
+  }
+}

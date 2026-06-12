@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+*.db
+*.db-shm
+*.db-wal
+*.db.bak*
+htmlcov/
+.coverage
+
+# Node
+node_modules/
+.next/
+out/
+.turbo/
+
+# Docker
+.dockerignore
+
+# Internal / private docs (never ship in the public tree)
+*.docx
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Environment — never commit real credentials
+.env
+!.env.example
+
+# Alembic
+alembic/versions/*.pyc

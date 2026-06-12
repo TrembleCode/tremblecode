@@ -1,0 +1,39 @@
+# Curated MCP servers the team lead may suggest for a project.
+# env_keys are filled by the human at approval time (stored encrypted).
+servers:
+  playwright:
+    description: Browser automation for E2E testing and UI verification.
+    transport: stdio
+    command: npx
+    args: ["-y", "@playwright/mcp@latest", "--headless"]
+    env_keys: []
+  context7:
+    description: Up-to-date library documentation lookup.
+    transport: stdio
+    command: npx
+    args: ["-y", "@upstash/context7-mcp"]
+    env_keys: []
+  fetch:
+    description: Fetch and convert web pages to markdown.
+    transport: stdio
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-fetch"]
+    env_keys: []
+  postgres:
+    description: Query and inspect a PostgreSQL database.
+    transport: stdio
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-postgres"]
+    env_keys: ["DATABASE_URL"]
+  sqlite:
+    description: Query and inspect a SQLite database file.
+    transport: stdio
+    command: npx
+    args: ["-y", "mcp-server-sqlite"]
+    env_keys: []
+  github:
+    description: GitHub issues, PRs and repository operations.
+    transport: stdio
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-github"]
+    env_keys: ["GITHUB_PERSONAL_ACCESS_TOKEN"]
