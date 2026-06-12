@@ -21,8 +21,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        // resolved per theme in globals.css (CRT: VT323/Share Tech Mono,
-        // normal: Source Serif 4/JetBrains Mono)
+        // resolved in globals.css (display/mono: JetBrains Mono,
+        // body/prose: Source Serif 4) — mirrors lucabrini.dev
         display: ["var(--font-display)", "monospace"],
         mono:    ["var(--font-mono)", "monospace"],
       },

@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-const THEMES = ["dark", "light", "normal-dark", "normal-light"] as const;
+const THEMES = ["light", "dark", "crt-dark", "crt-light"] as const;
 type Theme = (typeof THEMES)[number];
 
 const LABELS: Record<Theme, string> = {
-  dark: "CRT.DARK",
-  light: "CRT.LITE",
-  "normal-dark": "DARK",
-  "normal-light": "LITE",
+  light: "LIGHT",
+  dark: "DARK",
+  "crt-dark": "CRT.DARK",
+  "crt-light": "CRT.LITE",
 };
 
 const STORAGE_KEY = "tui-theme";
@@ -17,11 +17,11 @@ const STORAGE_KEY = "tui-theme";
 function coerce(value: string | null): Theme {
   return (THEMES as readonly string[]).includes(value ?? "")
     ? (value as Theme)
-    : "dark";
+    : "light";
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function ThemeToggle() {
     <button
       onClick={cycle}
       aria-label="Cycle theme"
-      title="Cycle theme: CRT dark → CRT light → dark → light"
+      title="Cycle theme: light → dark → CRT dark → CRT light"
       className="w-full flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-widest
                  text-tui-dim hover:text-tui-text hover:bg-tui-border/30
                  transition-colors group border-t border-tui-border/50"

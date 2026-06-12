@@ -74,14 +74,15 @@ export function AgentTerminal({ agentId, mode }: { agentId: string; mode: Mode }
 
       term = new Terminal({
         cursorBlink: true,
-        fontFamily: '"Share Tech Mono", monospace',
+        fontFamily: '"JetBrains Mono", monospace',
         fontSize: 13,
         scrollback: 5000,
+        // honeybee dark — warm wax cream on hive-dark, amber cursor
         theme: {
-          background: "#060a06",
-          foreground: "#33ff57",
-          cursor: "#00ff41",
-          selectionBackground: "#1a6626",
+          background: "#140e07",
+          foreground: "#f5e7c9",
+          cursor: "#ffb020",
+          selectionBackground: "#563e18",
         },
         disableStdin: mode === "ro",
       });
@@ -111,7 +112,7 @@ export function AgentTerminal({ agentId, mode }: { agentId: string; mode: Mode }
 
   return (
     <div className="relative h-full">
-      <div ref={containerRef} className="h-full w-full bg-[#060a06]" />
+      <div ref={containerRef} className="h-full w-full bg-[#140e07]" />
       {status !== "online" && (
         <div className="absolute top-2 right-3 text-xs font-mono tracking-widest text-tui-danger animate-flicker">
           {status === "connecting" ? "LINKING..." : "LINK DOWN — RETRYING"}

@@ -95,7 +95,9 @@ export function PrdEditor({ projectId, initialContent, onSaved }: Props) {
           className="w-full bg-tui-bg text-tui-text font-mono text-sm p-4 resize-none
                      focus:outline-none focus:ring-1 focus:ring-tui-active/40
                      placeholder:text-tui-border"
-          placeholder={"# PROJECT REQUIREMENTS DOCUMENT\n\nEnter your PRD in Markdown format..."}
+          placeholder={
+            "# PROJECT REQUIREMENTS DOCUMENT\n\nEnter your PRD in Markdown format..."
+          }
           spellCheck={false}
         />
       )}
@@ -103,7 +105,10 @@ export function PrdEditor({ projectId, initialContent, onSaved }: Props) {
       {mode === "PREVIEW" && (
         <div className="p-6 min-h-80">
           {renderedHtml ? (
-            <div className="tui-prose" dangerouslySetInnerHTML={{ __html: renderedHtml }} />
+            <div
+              className="tui-prose"
+              dangerouslySetInnerHTML={{ __html: renderedHtml }}
+            />
           ) : (
             <p className="text-tui-border font-mono text-sm tracking-widest">
               NO CONTENT TO PREVIEW
