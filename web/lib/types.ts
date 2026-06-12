@@ -34,6 +34,7 @@ export interface Project {
   container_id: string | null;
   image_variant: string;
   port_base: number | null;
+  archived: boolean;
   config_json: {
     roster?: { role_key: string; count: number; model?: string | null }[];
     ports?: Record<string, number>;

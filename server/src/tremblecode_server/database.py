@@ -46,6 +46,12 @@ _COLUMN_MIGRATIONS = [
         "(SELECT id FROM projects WHERE status IN "
         "('DISCUSSION','DRAFT','PLANNING','PLAN_REVIEW'))",
     ),
+    (
+        "projects",
+        "archived",
+        "ALTER TABLE projects ADD COLUMN archived BOOLEAN DEFAULT 0 NOT NULL",
+        "",
+    ),
 ]
 
 

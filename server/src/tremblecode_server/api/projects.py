@@ -104,6 +104,24 @@ async def _get_or_404(session, project_id: str) -> Project:
     return project
 
 
+@router.post("/{project_id}/archive", response_model=ProjectOut)
+async def archive_project(project_id: str, session: SessionDep):
+    project = await _get_or_404(session, project_id)
+    project.archived = True
+    await session.commit()
+    await manager.broadcast("project.updated", project.id, {"archived": True})
+    return project
+
+
+@router.post("/{project_id}/unarchive", response_model=ProjectOut)
+async def unarchive_project(project_id: str, session: SessionDep):
+    project = await _get_or_404(session, project_id)
+    project.archived = False
+    await session.commit()
+    await manager.broadcast("project.updated", project.id, {"archived": False})
+    return project
+
+
 @router.post("/{project_id}/start", response_model=ProjectOut)
 async def start_project(project_id: str, session: SessionDep):
     project = await _get_or_404(session, project_id)

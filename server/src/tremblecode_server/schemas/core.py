@@ -92,6 +92,7 @@ class ProjectOut(OrmModel):
     container_id: str | None
     image_variant: str
     port_base: int | None
+    archived: bool
     config_json: dict
     created_at: datetime
     updated_at: datetime

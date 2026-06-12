@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import JSON, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..database import Base
@@ -30,6 +30,7 @@ class Project(Base, PkMixin, TimestampMixin):
     container_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
     image_variant: Mapped[str] = mapped_column(String(32), default="base")
     port_base: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    archived: Mapped[bool] = mapped_column(Boolean, default=False)
     # roster: [{role_key, count, model?}], ports: {name: container_port}, etc.
     config_json: Mapped[dict] = mapped_column(JSON, default=dict)
 

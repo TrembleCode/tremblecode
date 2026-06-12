@@ -1,8 +1,24 @@
 import Link from "next/link";
+import type { MouseEvent } from "react";
 import type { Project } from "@/lib/types";
+import { api } from "@/lib/api";
 import { StatusBadge } from "./StatusBadge";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  onChanged,
+}: {
+  project: Project;
+  onChanged?: () => void;
+}) {
+  async function toggleArchive(e: MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    const action = project.archived ? "unarchive" : "archive";
+    await api.post(`/api/projects/${project.id}/${action}`);
+    onChanged?.();
+  }
+
   return (
     <Link
       href={`/projects/${project.id}`}
@@ -37,6 +53,13 @@ export function ProjectCard({ project }: { project: Project }) {
             SANDBOX.UP
           </span>
         )}
+        <button
+          type="button"
+          onClick={toggleArchive}
+          className="ml-auto tracking-widest text-tui-dim hover:text-tui-text transition-colors"
+        >
+          {project.archived ? "[UNARCHIVE]" : "[ARCHIVE]"}
+        </button>
       </div>
     </Link>
   );
