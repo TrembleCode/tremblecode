@@ -4,7 +4,7 @@ infra:
 	docker compose up -d redis
 
 server: infra
-	cd server && uv run uvicorn tremblecode_server.main:app --host 0.0.0.0 --port 8400 --reload
+	cd server && uv run python -m uvicorn tremblecode_server.main:app --host 0.0.0.0 --port 8400 --reload
 
 web:
 	cd web && pnpm dev
@@ -14,7 +14,7 @@ dev: infra
 	$(MAKE) -j2 _dev-server _dev-web
 
 _dev-server:
-	cd server && uv run uvicorn tremblecode_server.main:app --host 0.0.0.0 --port 8400 --reload
+	cd server && uv run python -m uvicorn tremblecode_server.main:app --host 0.0.0.0 --port 8400 --reload
 
 _dev-web:
 	cd web && pnpm dev

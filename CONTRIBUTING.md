@@ -15,10 +15,10 @@ full story.
 
 To keep the project sustainable we maintain a commercial offering alongside the
 AGPL core. So that we can offer the same code under both licenses, we ask every
-contributor to sign a **Contributor License Agreement** the first time they open
-a pull request. It's a one-time, one-click signature handled automatically by
-[CLA Assistant](https://cla-assistant.io/) — the bot will comment on your PR
-with a link.
+contributor to sign a **[Contributor License Agreement](CLA.md)** the first time
+they open a pull request. It's a one-time, one-click signature handled
+automatically by [CLA Assistant](https://cla-assistant.io/) — the bot will
+comment on your PR with a link.
 
 The CLA does **not** take away your rights: you keep copyright in your
 contribution and grant us a license to use it (including under our commercial
