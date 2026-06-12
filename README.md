@@ -11,8 +11,7 @@ subscription, with you in the loop only when it matters.
 
 </div>
 
-<!-- Record docs/assets/demo.gif (see docs/assets/README.md) and it renders here -->
-<p align="center"><img src="docs/assets/demo.gif" alt="TrembleCode demo" width="800"></p>
+<p align="center"><img src="docs/assets/task_board.png" alt="TrembleCode task board — a team of Claude Code agents claiming tasks across a kanban" width="800"></p>
 
 > **Why "TrembleCode"?** When a forager honeybee finds more nectar than the hive
 > can handle, it performs a _tremble dance_ — the signal to recruit more workers.
@@ -30,6 +29,27 @@ subscription, with you in the loop only when it matters.
    You only answer Inbox items (questions, destructive ops, milestone gates).
 5. **See everything live:** the board, the comms feed, each agent's terminal,
    the project wiki, dev-server previews, and per-agent/day/model cost tracking.
+
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><a href="docs/assets/prd_discussion.png"><img src="docs/assets/prd_discussion.png" alt="PRD discussion"></a><br><sub><b>PRD discussion</b> — interview a planning agent until you have a spec.</sub></td>
+    <td width="50%"><a href="docs/assets/gantt.png"><img src="docs/assets/gantt.png" alt="Plan & Gantt"></a><br><sub><b>Plan review</b> — milestones, stories, tasks, MCP, and a critical-path Gantt.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="docs/assets/task_board.png"><img src="docs/assets/task_board.png" alt="Task board"></a><br><sub><b>Task board</b> — the team claims and moves tasks through the queue.</sub></td>
+    <td width="50%"><a href="docs/assets/communications.png"><img src="docs/assets/communications.png" alt="Communications"></a><br><sub><b>Comms feed</b> — the agent-to-agent message bus, in real time.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="docs/assets/hil.png"><img src="docs/assets/hil.png" alt="Human-in-the-loop"></a><br><sub><b>Human-in-the-loop</b> — milestone gates and escalations land in your Inbox.</sub></td>
+    <td width="50%"><a href="docs/assets/wiki.png"><img src="docs/assets/wiki.png" alt="Project wiki"></a><br><sub><b>Project wiki</b> — the agent-maintained, git-versioned knowledge base.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="docs/assets/preview.png"><img src="docs/assets/preview.png" alt="Dev-server preview"></a><br><sub><b>Preview</b> — live dev-server previews per agent, in the dashboard.</sub></td>
+    <td width="50%"></td>
+  </tr>
+</table>
 
 ## Why TrembleCode
 
