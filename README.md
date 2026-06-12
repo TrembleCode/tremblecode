@@ -91,15 +91,7 @@ mode? Set it in Settings instead.
 
 ## Architecture
 
-```
-web (Next.js :3000) ──► server (FastAPI :8400) ──► SQLite + Redis + Docker
-                                                      │
-                            one container per project ▼  (tc-<slug>)
-                            relay (hooks, Redis consumers, tmux manager)
-                            tmux: tc-lead / tc-be-1 / tc-fe-1 / tc-qa-1 …
-                            each pane = interactive Claude Code session
-                            + per-agent "tremblecode" MCP server (comms/tasks)
-```
+![Architecture Diagram](docs/architecture.png)
 
 - **Comms**: a message bus (SQLite truth + Redis streams with consumer groups and
   explicit ACKs). Agents get a one-line tmux notification and pull bodies via MCP
